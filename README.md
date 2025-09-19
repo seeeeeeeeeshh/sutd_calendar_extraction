@@ -1,22 +1,25 @@
-# sutd_calendar_extraction
+# SUTD Calendar Extraction
 
-Javascript code:
-`
- * HOW TO USE:
- *
- * - Go to MyPortal > My Record > My Weekly Schedule.
- * - Under display options, make sure all 7 of the days and "Show Class Title" are checked. Also make sure that "Show AM/PM" and "Show Instructors" are unchecked. Click the "Refresh Calendar" button if you make any changes.
- * - Also make sure that it is showing week 12/09/2022 - 18/09/2022
- * - Open the developer tools and open the console. If you don't know how, you can check the link below
- *   - https://webmasters.stackexchange.com/questions/8525/how-do-i-open-the-javascript-console-in-different-browsers#answer-77337
- * - Paste the code given below and click enter.
- * - It will take about 30 seconds to extract the classes and create a '.ics' file from it, after which it will prompt you to download a 'schedule.ics' file.
+This script extracts your class schedule from SUTD’s MyPortal and generates an `.ics` calendar file that can be imported into Google Calendar, Outlook, or any other calendar app.  
+
+> **Note**: This is an edited version of the original code found at [Pastebin](https://pastebin.com/wSiP2Ljm).
+
+---
+
+ HOW TO USE:
+- Go to MyPortal > My Record > My Weekly Schedule.
+- Under display options, make sure all 7 of the days and "Show Class Title" are checked. Also make sure that "Show AM/PM" and "Show Instructors" are unchecked. Click the "Refresh Calendar" button if you make any changes.
+- Also make sure that the current week is being displayed.
+- Open the developer tools and open the console. If you don't know how, you can check the link below. The shortcut key is Ctrl + Shift + I for Windows Users.
+- [https://webmasters.stackexchange.com/questions/8525/how-do-i-open-the-javascript-console-in-different-browsers#answer-77337](https://balsamiq.com/support/faqs/browser-console/)
+- Paste the code given below and click enter.
+- Some browsers might not allow pasting. Type 'allow pasting', press Enter and then use the code.
+- It will take about 30 seconds to extract the classes and create a '.ics' file from it, after which it will prompt you to download a 'schedule.ics' file.
      WARNING: The code will interact with the webpage, so until the file download prompt comes, do not change anything in this tab.
- * - After downloading the file, you can import it in whichever calendar app you use.
-`;
+- Download the .ics file and import it to any calendar of your choice.
  
-// vvv-- CODE --vvv
-*Start copying from here:
+*Use the code below:
+```
 (async function (doc) {
   let classes = [];
   for (let i = 0; i < 14; i++) {
@@ -32,7 +35,7 @@ Javascript code:
         return {
           day: parseInt(day),
           month: MONTHS.indexOf(month) + 1,
-          year: 2022,
+          year: 2025,
         };
       });
  
@@ -97,4 +100,5 @@ END:VCALENDAR
     window.URL.revokeObjectURL(url);
   }, 0);
 });
- 
+
+```
